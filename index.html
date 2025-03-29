@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hex Bg-Color Changer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <p>Background Color Changer</p>
+      <div class="input-container">
+        <div class="hex-display"></div>
+        <input
+          type="text"
+          id="colorInput"
+          class="animated"
+          placeholder="Enter 6 digits"
+        />
+        <div class="error-message"></div>
+        <button onclick="resetFun()" class="reset-btn animatedelay">
+          Reset
+        </button>
+        <button onclick="previewFun()" class="privew-btn animatedelay">
+          Privew
+        </button>
+        <button onclick="applyFun()" class="apply-btn animatedelay">
+          Apply
+        </button>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
