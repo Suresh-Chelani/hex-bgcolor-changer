@@ -1,44 +1,46 @@
 # Hex Color Background Changer
 
-A simple web application that allows users to change the background color using hexadecimal color codes (6-digit numbers). The application provides preview functionality, permanent application with localStorage persistence, and reset capabilities.
+A simple web application that allows users to change the background color using hexa-alphanumeric color code. The application provides preview functionality, permanent application with localStorage persistence, and reset capabilities. Now includes scroll-driven animations for a visually engaging experience.
 
 ## Features
 
-- **Hex Code Validation**: Ensures input is a 6-digit numeric value
-- **Color Preview**: Temporarily preview background color without saving
-- **Persistent Color**: Save selected color to localStorage for persistence between sessions
-- **Reset Functionality**: Clear input and reset to default background
+- **Hex Code Validation**: Ensures input is a 6-digit alphanumeric hexadecimal value (0-9, a-f).
+- **Color Preview**: Temporarily preview background color without saving.
+- **Persistent Color**: Save selected color to localStorage for persistence between sessions.
+- **Reset Functionality**: Clear input and reset to default background.
 - **Visual Feedback**: 
   - Error messages with shake animation
   - Success/status messages
   - Current hex code display
   - Input field animations
-
+- **🎞️ Scroll-Driven Animations:**
+  - All main elements (heading, input, buttons) animate based on scroll progress
+  - Enhances visual interaction using `@keyframes` and `animation-timeline: scroll()`
 ## How to Use
 
 1. **Enter Hex Code**:
-   - Type a 6-digit numeric value (e.g., `212123` for bgColor)
+   - Type a 6-digit alphanumeric value (e.g., `21a3f0` for background color)
    - Do not include the `#` symbol
 
 2. **Preview Color**:
    - Click "Preview" to temporarily see the color
    - Preview will timeout after 3 seconds
-   - Does not save to localStorage
+   - Does not save to `localStorage`
    - Shows success message
 
 3. **Apply Color**:
    - Click "Apply" to permanently set the color
-   - Saves to localStorage (persists after page reload)
+   - Saves to `localStorage` (persists after page reload)
    - Shows success message
 
 4. **Reset**:
    - Click "Reset" to clear input and remove background color
-   - Also clears localStorage
+   - Also clears `localStorage`
    - Shows success message
 
 5. **Error States**
    - Red border + shake animation for invalid input
-   - Automatic filtering of non-numeric characters
+   - Automatic filtering of non-hex characters
    - Dynamic placeholder guidance
 
 ## Technologies Used

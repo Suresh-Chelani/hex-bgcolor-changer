@@ -5,9 +5,9 @@ const resetBtn = document.querySelector(".reset-btn");
 const previewBtn = document.querySelector(".preview-btn");
 const applyBtn = document.querySelector(".apply-btn");
 
-// Function to validate a 6-digit number
+// Function to validate a 6-digit number or alphanumeric string.
 const validateHex = (value) => {
-  return /^[0-9]{6}$/.test(value);
+  return /^[0-9a-f]{6}$/.test(value);
 };
 
 //  Function to display a message (success or error).
@@ -41,13 +41,16 @@ const previewFun = () => {
     colorInput.classList.remove("error");
     errorMessage.textContent = "";
     showMessage("PREVIEW", true);
+    const scrollAmount = document.body.scrollHeight * 0.25;
+    window.scrollBy({
+      top: scrollAmount,
+      behavior: "smooth",
+    });
   } else {
     if (value.length < 6) {
-      showMessage("Minimum 6 digits required!", false);
-    } else if (value.length > 6) {
-      showMessage("Maximum 6 digits!", false);
+      showMessage("Minimum 6 alphanumeric digits required!", false);
     } else {
-      showMessage("Enter only numeric values!", false);
+      showMessage("Enter only 6 digits allowed (0-9, a-f)!", false);
     }
   }
 };
@@ -67,13 +70,16 @@ const applyFun = () => {
     errorMessage.textContent = "";
     localStorage.setItem("bgColor", `#${value}`);
     showMessage("Successfully Applied", true);
+    const scrollAmount = document.body.scrollHeight * 0.25;
+    window.scrollBy({
+      top: scrollAmount,
+      behavior: "smooth",
+    });
   } else {
     if (value.length < 6) {
-      showMessage("Minimum 6 digits required!", false);
-    } else if (value.length > 6) {
-      showMessage("Maximum 6 digits!", false);
+      showMessage("Minimum 6 alphanumeric digits required!", false);
     } else {
-      showMessage("Enter only numeric values!", false);
+      showMessage("Enter only 6 digits allowed (0-9, a-f)!", false);
     }
   }
 };
@@ -90,7 +96,36 @@ const resetFun = () => {
   errorMessage.textContent = "";
   showMessage("RESET", true);
   localStorage.removeItem("bgColor");
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 };
+
+/**
+ * Function to handle the Enter key event for the input field.
+ */
+
+colorInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    const inputValue = colorInput.value.trim();
+
+    if (validateHex(inputValue)) {
+      const scrollAmount = document.body.scrollHeight * 0.25;
+      window.scrollBy({
+        top: scrollAmount,
+        behavior: "smooth",
+      });
+      applyFun();
+    } else {
+      if (inputValue.length < 6) {
+        showMessage("Minimum 6 alphanumeric digits required!", false);
+      } else {
+        showMessage("Enter only 6 digits allowed (0-9, a-f)!", false);
+      }
+    }
+  }
+});
 
 /**
  * When the page loads, check if there is a saved color in localStorage.
@@ -104,5 +139,3 @@ document.addEventListener("DOMContentLoaded", () => {
     hexDisplay.classList.add("visible");
   }
 });
-
-

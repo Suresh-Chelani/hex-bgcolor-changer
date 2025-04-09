@@ -15,18 +15,21 @@
           type="text"
           id="colorInput"
           class="animated"
-          placeholder="Enter 6 digits"
+          maxlength="6"
+          placeholder="Enter 6 digits (0-9, a-f)"
         />
         <div class="error-message"></div>
-        <button onclick="resetFun()" class="reset-btn animatedelay">
-          Reset
-        </button>
-        <button onclick="previewFun()" class="privew-btn animatedelay">
-          Preview
-        </button>
-        <button onclick="applyFun()" class="apply-btn animatedelay">
-          Apply
-        </button>
+        <div class="btn">
+          <button onclick="resetFun()" class="reset-btn animatedelay">
+            Reset
+          </button>
+          <button onclick="previewFun()" class="privew-btn animatedelay">
+            Preview
+          </button>
+          <button onclick="applyFun()" class="apply-btn animatedelay">
+            Apply
+          </button>
+        </div>
       </div>
     </div>
 
